@@ -1,0 +1,2 @@
+set(img_viewer_MESSAGE_FILES "msg/realsense_dev.msg")
+set(img_viewer_SERVICE_FILES "")

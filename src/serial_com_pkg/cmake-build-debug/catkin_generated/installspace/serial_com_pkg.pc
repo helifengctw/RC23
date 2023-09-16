@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: serial_com_pkg
+Description: Description of serial_com_pkg
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lserial_com_pkg
+Requires: message_runtime roscpp rospy serial std_msgs

@@ -1,0 +1,8 @@
+prefix=/home/hlf/catkin_ws/src/serial_com_pkg/cmake-build-debug/devel
+
+Name: serial_com_pkg
+Description: Description of serial_com_pkg
+Version: 0.0.0
+Cflags: -I/home/hlf/catkin_ws/src/serial_com_pkg/cmake-build-debug/devel/include -I/home/hlf/catkin_ws/src/serial_com_pkg/include
+Libs: -L${prefix}/lib -lserial_com_pkg
+Requires: message_runtime roscpp rospy serial std_msgs
