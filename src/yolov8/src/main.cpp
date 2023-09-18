@@ -14,24 +14,26 @@
 #include <cv_bridge/cv_bridge.h>
 #include "result.h"
 
+using namespace nvinfer1;
+
 long int count_=0;
 
 Logger gLogger;
-using namespace nvinfer1;
+
 const int kOutputSize = kMaxNumOutputBbox * sizeof(Detection) / sizeof(float) + 1;
 
-IRuntime *runtime = nullptr;
-ICudaEngine *engine = nullptr;
-IExecutionContext *context = nullptr;
-std::string cuda_post_process = "g";
-int model_bboxes;
+IRuntime *custom_runtime = nullptr;
+ICudaEngine *custom_engine = nullptr;
+IExecutionContext *custom_context = nullptr;
+std::string custom_cuda_post_process = "g";
+int custom_model_bboxes;
 
-float *device_buffers[2];
-float *output_buffer_host = nullptr;
-float *decode_ptr_host=nullptr;
-float *decode_ptr_device=nullptr;
+float *custom_device_buffers[2];
+float *custom_output_buffer_host = nullptr;
+float *custom_decode_ptr_host=nullptr;
+float *custom_decode_ptr_device=nullptr;
 
-cudaStream_t stream;
+cudaStream_t custom_stream;
 
 enum target
 {
@@ -53,6 +55,7 @@ Result_buffer result_buffer[3] = {
 
 cv::Mat detected_src;
 bool if_show = true, if_save = false;
+
 //void paramCallback()
 
 void serialize_engine(std::string &wts_name, std::string &engine_name, std::string &sub_type) {
@@ -92,9 +95,9 @@ void deserialize_engine(std::string &engine_name, IRuntime **runtime, ICudaEngin
         assert(false);
     }
     size_t size = 0;
-    file.seekg(0, file.end);
+    file.seekg(0, std::ifstream::end);
     size = file.tellg();
-    file.seekg(0, file.beg);
+    file.seekg(0, std::ifstream::beg);
     char *serialized_engine = new char[size];
     assert(serialized_engine);
     file.read(serialized_engine, size);
@@ -274,23 +277,24 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     std::vector<cv::Mat> img_batch;
     img_batch.push_back(src);
     // Preprocess
-    cuda_batch_preprocess(img_batch, device_buffers[0], kInputW, kInputH, stream);
+    cuda_batch_preprocess(img_batch, custom_device_buffers[0], kInputW, kInputH, custom_stream);
     // Run inference
-    infer(*context, stream, (void **)device_buffers, output_buffer_host, kBatchSize, decode_ptr_host, decode_ptr_device, model_bboxes, cuda_post_process);
+    infer(*custom_context, custom_stream, (void **)custom_device_buffers, custom_output_buffer_host,
+          kBatchSize, custom_decode_ptr_host, custom_decode_ptr_device, custom_model_bboxes, custom_cuda_post_process);
     std::vector<std::vector<Detection>> res_batch;
-    batch_process(res_batch, decode_ptr_host, img_batch.size(), bbox_element, img_batch);
+    batch_process(res_batch, custom_decode_ptr_host, img_batch.size(), bbox_element, img_batch);
     // Draw bounding boxes
     calc_distance(img_batch, res_batch);
 
     // Save detected images
-    for (size_t j = 0; j < img_batch.size(); j++) {
+    for (const auto & j : img_batch) {
         if (if_save){
             char base_name[256];   //图像保存
             sprintf(base_name,"/home/hlf/Downloads/myFiles/yolov8_init/detect_result/database/%04ld.jpg",count_++);
-            cv::imwrite(base_name, img_batch[j]);
+            cv::imwrite(base_name, j);
         }
         if (if_show){
-        cv::imshow("view", img_batch[j]);
+        cv::imshow("view", j);
         }
     }
 }
@@ -300,19 +304,20 @@ int main(int argc, char **argv) {
     ros::NodeHandle nh;
 
     cudaSetDevice(kGpuId);
-    std::string wts_name; ///home/hlf/catkin_ws/src/yolov8/yolov8n.wts
-    std::string engine_name;
-    std::string sub_type; //
+    std::string wts_name = "";
+    std::string engine_name = "";
+    std::string sub_type = "";
 
     char run_mode = 'd';
     if (run_mode == 's') {
-        wts_name = "/home/hlf/catkin_ws/src/yolov8/weights/4500_best2.wts";
-        engine_name = "/home/hlf/catkin_ws/src/yolov8/weights/4500_best2.engine";
+        wts_name = "/home/hlf/catkin_ws/src/yolov8/weights/64061_best.wts";
+        engine_name = "/home/hlf/catkin_ws/src/yolov8/engine/64061_best.engine";
         sub_type = "n";
     } else if (run_mode == 'd') {
-        engine_name = "/home/hlf/catkin_ws/src/yolov8/yolov8n.engine";
-        cuda_post_process = "g";
+        engine_name = "/home/hlf/catkin_ws/src/yolov8/engine/64061_best.engine";
+        custom_cuda_post_process = "g";
     }
+
 
 //    if (!parse_args(argc, argv, wts_name, engine_name, img_dir, sub_type, cuda_post_process)) {
 //        std::cerr << "Arguments not right!" << std::endl;
@@ -320,7 +325,6 @@ int main(int argc, char **argv) {
 //        std::cerr << "./yolov8 -d [.engine] ../samples  [c/g]// deserialize plan file and run inference" << std::endl;
 //        return -1;
 //    }
-    //创建句柄（虽然后面没用到这个句柄，但如果不创建，运行时进程会出错）
 
     // Create a model using the API directly and serialize it to a file
     if (!wts_name.empty()) {
@@ -329,14 +333,15 @@ int main(int argc, char **argv) {
     }
 
     // Deserialize the engine from file
-    deserialize_engine(engine_name, &runtime, &engine, &context);
-    CUDA_CHECK(cudaStreamCreate(&stream));
+    deserialize_engine(engine_name, &custom_runtime, &custom_engine, &custom_context);
+    CUDA_CHECK(cudaStreamCreate(&custom_stream));
     cuda_preprocess_init(kMaxInputImageSize);
-    auto out_dims = engine->getBindingDimensions(1);
-    model_bboxes = out_dims.d[0];
+    auto out_dims = custom_engine->getBindingDimensions(1);
+    custom_model_bboxes = out_dims.d[0];
 
     // Prepare cpu and gpu buffers
-    prepare_buffer(engine, &device_buffers[0], &device_buffers[1], &output_buffer_host, &decode_ptr_host, &decode_ptr_device, cuda_post_process);
+    prepare_buffer(custom_engine, &custom_device_buffers[0], &custom_device_buffers[1],
+                   &custom_output_buffer_host, &custom_decode_ptr_host, &custom_decode_ptr_device, custom_cuda_post_process);
 
     ros::Subscriber modeSub = nh.subscribe("/detect_mode", 1, &modeCallback);
     image_transport::ImageTransport it(nh);
@@ -378,17 +383,17 @@ int main(int argc, char **argv) {
     cv::destroyWindow("view");
 
     // Release stream and buffers
-    cudaStreamDestroy(stream);
-    CUDA_CHECK(cudaFree(device_buffers[0]));
-    CUDA_CHECK(cudaFree(device_buffers[1]));
-    CUDA_CHECK(cudaFree(decode_ptr_device));
-    delete[] decode_ptr_host;
-    delete[] output_buffer_host;
+    cudaStreamDestroy(custom_stream);
+    CUDA_CHECK(cudaFree(custom_device_buffers[0]));
+    CUDA_CHECK(cudaFree(custom_device_buffers[1]));
+    CUDA_CHECK(cudaFree(custom_decode_ptr_device));
+    delete[] custom_decode_ptr_host;
+    delete[] custom_output_buffer_host;
     cuda_preprocess_destroy();
     // Destroy the engine
-    delete context;
-    delete engine;
-    delete runtime;
+    delete custom_context;
+    delete custom_engine;
+    delete custom_runtime;
 
     return 0;
 }
