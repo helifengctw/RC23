@@ -8,3 +8,5 @@ ultralytics
 # tensorrt
 # cuda-python
 # pycuda
+
+https://mojie.mx/api/v1/client/subscribe?token=39efbfc27b916987f1da09ad3469110b
