@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/hlf/catkin_ws/src/usb_camera_pkg/cmake-build-debug/gtest/googlemock/cmake_install.cmake")
+  include("/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/cmake-build-debug/gtest/googlemock/cmake_install.cmake")
 
 endif()
 

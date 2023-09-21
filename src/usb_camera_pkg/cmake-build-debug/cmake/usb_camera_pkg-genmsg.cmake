@@ -2,7 +2,7 @@
 
 message(STATUS "usb_camera_pkg: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iusb_camera_pkg:/home/hlf/catkin_ws/src/usb_camera_pkg/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iusb_camera_pkg:/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,9 +17,9 @@ add_custom_target(usb_camera_pkg_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
+get_filename_component(_filename "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
 add_custom_target(_usb_camera_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "usb_camera_pkg" "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "usb_camera_pkg" "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" ""
 )
 
 #
@@ -29,7 +29,7 @@ add_custom_target(_usb_camera_pkg_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(usb_camera_pkg
-  "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
+  "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/usb_camera_pkg
@@ -49,7 +49,7 @@ add_custom_target(usb_camera_pkg_generate_messages_cpp
 add_dependencies(usb_camera_pkg_generate_messages usb_camera_pkg_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
+get_filename_component(_filename "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
 add_dependencies(usb_camera_pkg_generate_messages_cpp _usb_camera_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -62,7 +62,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS usb_camera_pkg_generate_messages_cp
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(usb_camera_pkg
-  "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
+  "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/usb_camera_pkg
@@ -82,7 +82,7 @@ add_custom_target(usb_camera_pkg_generate_messages_eus
 add_dependencies(usb_camera_pkg_generate_messages usb_camera_pkg_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
+get_filename_component(_filename "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
 add_dependencies(usb_camera_pkg_generate_messages_eus _usb_camera_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -95,7 +95,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS usb_camera_pkg_generate_messages_eu
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(usb_camera_pkg
-  "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
+  "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/usb_camera_pkg
@@ -115,7 +115,7 @@ add_custom_target(usb_camera_pkg_generate_messages_lisp
 add_dependencies(usb_camera_pkg_generate_messages usb_camera_pkg_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
+get_filename_component(_filename "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
 add_dependencies(usb_camera_pkg_generate_messages_lisp _usb_camera_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -128,7 +128,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS usb_camera_pkg_generate_messages_li
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(usb_camera_pkg
-  "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
+  "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/usb_camera_pkg
@@ -148,7 +148,7 @@ add_custom_target(usb_camera_pkg_generate_messages_nodejs
 add_dependencies(usb_camera_pkg_generate_messages usb_camera_pkg_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
+get_filename_component(_filename "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
 add_dependencies(usb_camera_pkg_generate_messages_nodejs _usb_camera_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -161,7 +161,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS usb_camera_pkg_generate_messages_no
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(usb_camera_pkg
-  "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
+  "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/usb_camera_pkg
@@ -181,7 +181,7 @@ add_custom_target(usb_camera_pkg_generate_messages_py
 add_dependencies(usb_camera_pkg_generate_messages usb_camera_pkg_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/hlf/catkin_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
+get_filename_component(_filename "/home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/msg/realsense_dev.msg" NAME_WE)
 add_dependencies(usb_camera_pkg_generate_messages_py _usb_camera_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

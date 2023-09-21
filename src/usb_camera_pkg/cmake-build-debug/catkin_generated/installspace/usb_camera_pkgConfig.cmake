@@ -67,8 +67,8 @@ set(usb_camera_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(usb_camera_pkg_SOURCE_PREFIX /home/hlf/catkin_ws/src/usb_camera_pkg)
-  set(usb_camera_pkg_DEVEL_PREFIX /home/hlf/catkin_ws/src/usb_camera_pkg/cmake-build-debug/devel)
+  set(usb_camera_pkg_SOURCE_PREFIX /home/hlf/ws_repo/v5_ws/src/usb_camera_pkg)
+  set(usb_camera_pkg_DEVEL_PREFIX /home/hlf/ws_repo/v5_ws/src/usb_camera_pkg/cmake-build-debug/devel)
   set(usb_camera_pkg_INSTALL_PREFIX "")
   set(usb_camera_pkg_PREFIX ${usb_camera_pkg_DEVEL_PREFIX})
 else()

@@ -1,4 +1,4 @@
 # ninja log v5
-0	501	1694778763887892242	build.ninja	ee34086e9fbea815
-0	1021	1694699524730438951	CMakeFiles/serial_com.dir/src/serial_com_node.cpp.o	f110c7a680b77179
-1022	1093	1694699524802437489	devel/lib/serial_com_pkg/serial_com	13d2eb54aa61d19b
+1	567	1695304177909439134	build.ninja	ee34086e9fbea815
+1	1287	1695047645259922884	CMakeFiles/serial_com.dir/src/serial_com_node.cpp.o	adf6491ee1f6e86
+1287	1399	1695047645371918653	devel/lib/serial_com_pkg/serial_com	2d1eecafbcce0f06

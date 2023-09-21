@@ -67,8 +67,8 @@ set(serial_com_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(serial_com_pkg_SOURCE_PREFIX /home/hlf/catkin_ws/src/serial_com_pkg)
-  set(serial_com_pkg_DEVEL_PREFIX /home/hlf/catkin_ws/src/serial_com_pkg/cmake-build-debug/devel)
+  set(serial_com_pkg_SOURCE_PREFIX /home/hlf/ws_repo/v5_ws/src/serial_com_pkg)
+  set(serial_com_pkg_DEVEL_PREFIX /home/hlf/ws_repo/v5_ws/src/serial_com_pkg/cmake-build-debug/devel)
   set(serial_com_pkg_INSTALL_PREFIX "")
   set(serial_com_pkg_PREFIX ${serial_com_pkg_DEVEL_PREFIX})
 else()

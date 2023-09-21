@@ -1,0 +1,8 @@
+prefix=/home/hlf/ws_repo/v5_ws/src/yolov5/cmake-build-debug/devel
+
+Name: yolov5
+Description: Description of yolov5
+Version: 0.0.0
+Cflags: -I/home/hlf/ws_repo/v5_ws/src/yolov5/cmake-build-debug/devel/include
+Libs: -L${prefix}/lib 
+Requires: cv_bridge image_transport roscpp rospy sensor_msgs std_msgs message_runtime

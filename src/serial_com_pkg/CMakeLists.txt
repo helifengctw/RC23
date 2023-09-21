@@ -126,7 +126,7 @@ include_directories(
 # include
     ${catkin_INCLUDE_DIRS}
     ${PROJECT_SOURCE_DIR}/../../devel/include/serial_com_pkg
-    ${PROJECT_SOURCE_DIR}/../../devel/include/yolov8
+    ${PROJECT_SOURCE_DIR}/../../devel/include/yolov5
 )
 
 ## Declare a C++ library

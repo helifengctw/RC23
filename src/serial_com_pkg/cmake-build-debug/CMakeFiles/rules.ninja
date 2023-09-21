@@ -118,7 +118,7 @@ rule CXX_SHARED_LIBRARY_LINKER__gtest_main_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/hlf/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/hlf/catkin_ws/src/serial_com_pkg -B/home/hlf/catkin_ws/src/serial_com_pkg/cmake-build-debug
+  command = /home/hlf/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/hlf/ws_repo/v5_ws/src/serial_com_pkg -B/home/hlf/ws_repo/v5_ws/src/serial_com_pkg/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

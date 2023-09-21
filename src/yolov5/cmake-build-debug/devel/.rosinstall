@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/hlf/ws_repo/v5_ws/src/yolov5/cmake-build-debug/devel/setup.sh
