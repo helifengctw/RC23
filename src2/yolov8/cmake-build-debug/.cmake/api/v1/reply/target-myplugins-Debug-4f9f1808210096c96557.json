@@ -1,0 +1,336 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "devel/lib/libmyplugins.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_definitions",
+			"include",
+			"find_package",
+			"configure_shared_library_build_settings",
+			"include_directories",
+			"gencpp_append_include_dirs",
+			"_generate_msg_cpp",
+			"generate_messages"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"/opt/ros/noetic/share/rosconsole/cmake/rosconsole-extras.cmake",
+			"/opt/ros/noetic/share/rosconsole/cmake/rosconsoleConfig.cmake",
+			"/opt/ros/noetic/share/cv_bridge/cmake/cv_bridgeConfig.cmake",
+			"/opt/ros/noetic/share/catkin/cmake/catkinConfig.cmake",
+			"/opt/ros/noetic/share/catkin/cmake/tools/libraries.cmake",
+			"/opt/ros/noetic/share/catkin/cmake/all.cmake",
+			"/opt/ros/noetic/share/gencpp/cmake/gencpp-extras.cmake",
+			"cmake-build-debug/cmake/yolov8-genmsg.cmake",
+			"/opt/ros/noetic/share/genmsg/cmake/genmsg-extras.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 196,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 197,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"file" : 4,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 5
+			},
+			{
+				"file" : 3,
+				"parent" : 6
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 197,
+				"parent" : 7
+			},
+			{
+				"file" : 2,
+				"parent" : 8
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 222,
+				"parent" : 9
+			},
+			{
+				"file" : 1,
+				"parent" : 10
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 12,
+				"parent" : 11
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 20,
+				"parent" : 5
+			},
+			{
+				"file" : 6,
+				"parent" : 13
+			},
+			{
+				"command" : 5,
+				"file" : 6,
+				"line" : 174,
+				"parent" : 14
+			},
+			{
+				"command" : 2,
+				"file" : 5,
+				"line" : 18,
+				"parent" : 15
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 8,
+				"parent" : 11
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 86,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 9,
+				"line" : 307,
+				"parent" : 18
+			},
+			{
+				"file" : 8,
+				"parent" : 19
+			},
+			{
+				"command" : 8,
+				"file" : 8,
+				"line" : 31,
+				"parent" : 20
+			},
+			{
+				"command" : 7,
+				"file" : 7,
+				"line" : 46,
+				"parent" : 21
+			},
+			{
+				"command" : 6,
+				"file" : 7,
+				"line" : 63,
+				"parent" : 22
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 135,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 154,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++11 --generate-code=arch=compute_35,code=[compute_35,sm_35] --generate-code=arch=compute_50,code=[compute_50,sm_50] --generate-code=arch=compute_72,code=[compute_72,sm_72] -Xcompiler=-fPIC   -std=c++11"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "API_EXPORTS"
+				},
+				{
+					"backtrace" : 12,
+					"define" : "ROSCONSOLE_BACKEND_LOG4CXX"
+				},
+				{
+					"backtrace" : 16,
+					"define" : "ROS_BUILD_SHARED_LIBS=1"
+				},
+				{
+					"backtrace" : 17,
+					"define" : "ROS_PACKAGE_NAME=\"yolov8\""
+				},
+				{
+					"define" : "myplugins_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 23,
+					"path" : "/home/hlf/catkin_ws/src/yolov8/cmake-build-debug/devel/include"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/home/hlf/catkin_ws/src/yolov8/include/yolov8"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/home/hlf/catkin_ws/src/yolov8/../../devel/include/serial_com_pkg"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/home/hlf/catkin_ws/src/yolov8/../../devel/include/yolov8"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/home/hlf/catkin_ws/src/yolov8/plugin"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/opt/ros/noetic/include"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/usr/include/opencv4"
+				},
+				{
+					"backtrace" : 25,
+					"path" : "/usr/local/cuda/include"
+				}
+			],
+			"language" : "CUDA",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "myplugins::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lnvinfer",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lcudart",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcudadevrt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcudart_static",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lrt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CUDA"
+	},
+	"name" : "myplugins",
+	"nameOnDisk" : "libmyplugins.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "plugin/yololayer.cu",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

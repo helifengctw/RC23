@@ -1,0 +1,12 @@
+# ninja log v5
+3	1060	1694952760929945512	CMakeFiles/yolov8.dir/src/model.cpp.o	d86478a3f3ef7307
+3	6483	1694952766353994389	CMakeFiles/yolov8.dir/src/postprocess.cu.o	2aa795df0ce0b00
+0	674	1695393824203827991	build.ninja	cb3be5603e8332e6
+3	6812	1694952766681997345	CMakeFiles/yolov8.dir/src/preprocess.cu.o	24993155fb053d24
+2050	2090	1694952761961954812	devel/lib/libmyplugins.so	a4a5e839d8e686d3
+3	2035	1694952761905954308	CMakeFiles/yolov8.dir/src/postprocess.cpp.o	87b10a6c2ee3bf8a
+3	3380	1694952763249966419	CMakeFiles/yolov8.dir/src/main.cpp.o	76266d1240414e98
+2	588	1694952760461941295	CMakeFiles/yolov8.dir/src/block.cpp.o	be4675ce1112c252
+6812	7197	1694952767066000806	devel/lib/yolov8/yolov8	f043fe62f05d5812
+0	1655	1694786827149941242	CMakeFiles/yolov8.dir/src/calibrator.cpp.o	21fcdd4a5aaf7476
+2	2050	1694952761921954451	CMakeFiles/myplugins.dir/plugin/yololayer.cu.o	63dcfc2403338a29
