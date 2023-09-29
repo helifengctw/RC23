@@ -45,13 +45,14 @@ struct Result_buffer{
     int x;
     int y;
     int distance;
+    int height;
     float confidence;
 };
 
 Result_buffer result_buffer[3] = {
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0}
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
 };
 
 cv::Mat detected_src;
@@ -188,17 +189,20 @@ void calc_distance(std::vector<cv::Mat> &img_batch, std::vector<std::vector<Dete
             for (size_t j = 0; j < res.size(); j++) {
                 cv::Rect r = get_rect(img, res[j].bbox);
                 // real_distance / real_width = focal_distance / pixel_width
-                int distance = 0;
+                // height / real_distance = pixel_height / focal_length
+                int distance = 0, height = 0;
                 float confidence = .0f;
 
                 if ((int)res[j].class_id == 0){
                     int calc_w = r.width > r.height ? r.width : r.height;
                     distance = 20 * focal_length / calc_w;
+                    height = distance * (250 - r.y - r.height / 2) / focal_length;
                     confidence = res[j].conf;
                 }
                 else if((int)res[j].class_id == 1){
                     int calc_w = r.width > r.height ? r.width : r.height;
                     distance = int(24.5 * focal_length / calc_w);
+                    height = distance * (250 - r.y - r.height / 2) / focal_length;
                     confidence = res[j].conf;
                 }
                 else if((int)res[j].class_id == 3){
@@ -209,19 +213,29 @@ void calc_distance(std::vector<cv::Mat> &img_batch, std::vector<std::vector<Dete
 
                 if ((int)res[j].class_id <= 1){
                     result_temp_list[(int)res[j].class_id].emplace_back(
-                            (Result_buffer){r.tl().x + r.width/2, r.tl().y + r.height/2, distance, confidence});
+                            (Result_buffer){r.tl().x + r.width/2, r.tl().y + r.height/2,
+                                            distance, height, confidence});
                 }
                 else if ((int)res[j].class_id == 3){
                     result_temp_list[(int)res[j].class_id - 1].emplace_back(
-                            (Result_buffer){r.tl().x + r.width/2, r.tl().y + r.height/2, distance, confidence});
+                            (Result_buffer){r.tl().x + r.width/2, r.tl().y + r.height/2,
+                                            distance, height, confidence});
                 }
 
                 if (if_show_all){
                     cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
                     cv::putText(img, std::to_string((int) res[j].class_id), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN,
-                                1.2, cv::Scalar(0x00, 0xFF, 0x00), 1);
-                    cv::putText(img, std::to_string((distance)), cv::Point(r.x, r.y + 15), cv::FONT_HERSHEY_PLAIN,
-                                1.2, cv::Scalar(0x00, 0x00, 0xFF), 1);
+                                1.2, cv::Scalar(0x00, 0xFF, 0x00), 2);
+                    cv::putText(img, std::to_string(height), cv::Point(r.x, r.y + 15), cv::FONT_HERSHEY_PLAIN,
+                                1.2, cv::Scalar(0xFF, 0x00, 0xFF), 2);
+//                    cv::putText(img, std::to_string(height), cv::Point(r.x + 50, r.y + 15), cv::FONT_HERSHEY_PLAIN,
+//                                1.2, cv::Scalar(0xFF, 0x00, 0xFF), 2);
+                    cv::putText(img, std::to_string(r.y + r.height / 2), cv::Point(r.x + 100, r.y + 15), cv::FONT_HERSHEY_PLAIN,
+                                1.2, cv::Scalar(0xFF, 0x00, 0xFF), 2);
+//                    cv::putText(img, " : ", cv::Point(r.x + 150, r.y + 15), cv::FONT_HERSHEY_PLAIN,
+//                                1.2, cv::Scalar(0xFF, 0x00, 0xFF), 2);
+//                    cv::putText(img, std::to_string(r.height), cv::Point(r.x + 200, r.y + 15), cv::FONT_HERSHEY_PLAIN,
+//                                1.2, cv::Scalar(0xFF, 0x00, 0xFF), 2);
                 }
             }
             if (if_show_all) detected_src = img;
