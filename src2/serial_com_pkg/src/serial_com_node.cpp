@@ -10,7 +10,7 @@
 
 serial::Serial sp;  //创建一个serial类
 
-void resultCallback(const yolov8::result ::ConstPtr& msg) {
+void resultCallback(const yolov8::result::ConstPtr& msg) {
     uint8_t send[8] = {1, 2, 3, 4, 5, 6, 7 , 8};
 
     send[0] = (uint8_t) msg->x;
@@ -19,10 +19,11 @@ void resultCallback(const yolov8::result ::ConstPtr& msg) {
     send[3] = (uint8_t) ((msg->y) >> 8);
     send[4] = (uint8_t) msg->distance;
     send[5] = (uint8_t) ((msg->distance) >> 8);
-    send[6] = (uint8_t) (msg->direction + 180);
-    send[7] = (uint8_t) ((msg->direction + 180) >> 8);
+    send[6] = (uint8_t) 180;
+    send[7] = (uint8_t) (180 >> 8);
 
     sp.write(send, 8);  //把数据发送回去
+    ROS_WARN("send+++++++++++++++++++++++++");
     std::cout << "send: " << std::hex << (send[0] & 0xff) << std::endl;
 }
 
@@ -74,6 +75,8 @@ int main(int argc, char** argv)
 
         }
         loop_rate.sleep();
+        ros::spinOnce();
+
     }
 
     sp.close();  //关闭串口

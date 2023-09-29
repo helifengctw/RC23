@@ -45,18 +45,23 @@ struct Result_buffer{
     int x;
     int y;
     int distance;
+    float confidence;
 };
 
 Result_buffer result_buffer[3] = {
-        {0, 0, 0},
-        {0, 0, 0},
-        {0, 0, 0}
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+        {0, 0, 0, 0}
 };
 
 cv::Mat detected_src;
-bool if_show = true, if_save = false;
+bool if_show = true, if_save = false, if_show_all = true;
 
 //void paramCallback()
+
+static bool cmp(const std::vector<int>& a,const std::vector<int>& b){
+    return a.back()<b.back();
+}
 
 void serialize_engine(std::string &wts_name, std::string &engine_name, std::string &sub_type) {
     IBuilder *builder = createInferBuilder(gLogger);
@@ -183,42 +188,48 @@ void calc_distance(std::vector<cv::Mat> &img_batch, std::vector<std::vector<Dete
             for (size_t j = 0; j < res.size(); j++) {
                 cv::Rect r = get_rect(img, res[j].bbox);
                 // real_distance / real_width = focal_distance / pixel_width
-                // real_width: 0: 20 cm , 1: 24.5 cm
                 int distance = 0;
+                float confidence = .0f;
+
                 if ((int)res[j].class_id == 0){
                     int calc_w = r.width > r.height ? r.width : r.height;
                     distance = 20 * focal_length / calc_w;
+                    confidence = res[j].conf;
                 }
                 else if((int)res[j].class_id == 1){
                     int calc_w = r.width > r.height ? r.width : r.height;
                     distance = int(24.5 * focal_length / calc_w);
+                    confidence = res[j].conf;
                 }
                 else if((int)res[j].class_id == 3){
                     int calc_w = r.width > r.height ? r.height : r.width;
-                    distance = int(100 * focal_length / calc_w);
+                    distance = int(20 * focal_length / calc_w);
+                    confidence = res[j].conf;
                 }
 
                 if ((int)res[j].class_id <= 1){
                     result_temp_list[(int)res[j].class_id].emplace_back(
-                            (Result_buffer){r.tl().x - r.width/2, r.tl().y - r.height/2, distance});
+                            (Result_buffer){r.tl().x + r.width/2, r.tl().y + r.height/2, distance, confidence});
                 }
                 else if ((int)res[j].class_id == 3){
                     result_temp_list[(int)res[j].class_id - 1].emplace_back(
-                            (Result_buffer){r.tl().x - r.width/2, r.tl().y - r.height/2, distance});
+                            (Result_buffer){r.tl().x + r.width/2, r.tl().y + r.height/2, distance, confidence});
                 }
 
-                cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
-                cv::putText(img, std::to_string((int) res[j].class_id), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN,
-                            1.2, cv::Scalar(0x00, 0xFF, 0x00), 1);
-                cv::putText(img, std::to_string((distance)), cv::Point(r.x, r.y + 15), cv::FONT_HERSHEY_PLAIN,
-                            1.2, cv::Scalar(0x00, 0x00, 0xFF), 1);
+                if (if_show_all){
+                    cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
+                    cv::putText(img, std::to_string((int) res[j].class_id), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN,
+                                1.2, cv::Scalar(0x00, 0xFF, 0x00), 1);
+                    cv::putText(img, std::to_string((distance)), cv::Point(r.x, r.y + 15), cv::FONT_HERSHEY_PLAIN,
+                                1.2, cv::Scalar(0x00, 0x00, 0xFF), 1);
+                }
             }
-            detected_src = img;
+            if (if_show_all) detected_src = img;
         }
     }
 
     // yolov8 label 0:volleyball, 1:basketball, 2:hoop, 3:column
-    // serial_com_mode 0:none 
+    // serial_com_mode 0:none, 1:volleyball, 2:basketball, 3:column, 4:hoop
     switch (aim) {
         case 1:{
             if (result_temp_list[0].empty())
@@ -226,7 +237,12 @@ void calc_distance(std::vector<cv::Mat> &img_batch, std::vector<std::vector<Dete
             else{
                 auto target_iter = result_temp_list[0].begin();
                 int min_dist = 10000;
+                float max_confidence = 0;
                 for (auto iter = result_temp_list[0].begin(); iter != result_temp_list[0].end()-1; iter++){
+                    if ((*iter).distance < min_dist){
+                        target_iter = iter;
+                        min_dist = (*iter).distance;
+                    }
                     if ((*iter).distance < min_dist){
                         target_iter = iter;
                         min_dist = (*iter).distance;
@@ -329,14 +345,6 @@ int main(int argc, char **argv) {
         custom_cuda_post_process = "g";
     }
 
-
-//    if (!parse_args(argc, argv, wts_name, engine_name, img_dir, sub_type, cuda_post_process)) {
-//        std::cerr << "Arguments not right!" << std::endl;
-//        std::cerr << "./yolov8 -s [.wts] [.engine] [n/s/m/l/x]  // serialize model to plan file" << std::endl;
-//        std::cerr << "./yolov8 -d [.engine] ../samples  [c/g]// deserialize plan file and run inference" << std::endl;
-//        return -1;
-//    }
-
     // Create a model using the API directly and serialize it to a file
     if (!wts_name.empty()) {
         serialize_engine(wts_name, engine_name, sub_type);
@@ -375,11 +383,11 @@ int main(int argc, char **argv) {
 
         //发布检测结果
         yolov8::result result_msg;
-        if (aim <= 1){
-            result_msg.x = result_buffer[aim].x;
-            result_msg.y = result_buffer[aim].y;
-            result_msg.distance = result_buffer[aim].distance;
-            result_msg.direction = 2;
+        if (aim == 2 || aim == 1){
+            result_msg.x = result_buffer[aim-1].x;
+            result_msg.y = result_buffer[aim-1].y;
+            result_msg.distance = result_buffer[aim-1].distance;
+            result_msg.direction = 3;
         }
         else{
             result_msg.x = 2;
@@ -410,11 +418,3 @@ int main(int argc, char **argv) {
 
     return 0;
 }
-
-// 用cv的窗口显示检测后的图片
-//    cv::namedWindow("view");
-//    cv::startWindowThread();
-//    cv::destroyWindow("view");
-//    if (if_show){
-//        cv::imshow("view", img_batch[j]);
-//    }
