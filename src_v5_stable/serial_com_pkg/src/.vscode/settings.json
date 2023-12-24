@@ -1,0 +1,17 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/nuaa/Downloads/v5s_ws/devel_isolated/yolov5/lib/python2.7/dist-packages",
+        "/home/nuaa/Downloads/v5s_ws/devel_isolated/serial_com_pkg/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "/usr/local/lib",
+        "/usr/local/lib/python3.6/pyrealsense2"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/nuaa/Downloads/v5s_ws/devel_isolated/yolov5/lib/python2.7/dist-packages",
+        "/home/nuaa/Downloads/v5s_ws/devel_isolated/serial_com_pkg/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "/usr/local/lib",
+        "/usr/local/lib/python3.6/pyrealsense2"
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
+}

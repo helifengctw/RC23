@@ -1,0 +1,8 @@
+prefix=/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel
+
+Name: yolov5
+Description: Description of yolov5
+Version: 0.0.0
+Cflags: -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include
+Libs: -L${prefix}/lib 
+Requires: cv_bridge image_transport roscpp rospy sensor_msgs std_msgs message_runtime

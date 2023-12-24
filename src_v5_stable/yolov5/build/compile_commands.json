@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build",
+  "command": "/usr/local/cuda/bin/nvcc  -DAPI_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"yolov5\\\" -Dmyplugins_EXPORTS -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/opencv4 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/../../devel/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin  -g -Xcompiler=-fPIC   -std=c++11 -x cu -c /home/nuaa/Downloads/v5s_ws/src/yolov5/plugin/yololayer.cu -o CMakeFiles/myplugins.dir/plugin/yololayer.cu.o",
+  "file": "/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin/yololayer.cu"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"yolov5\\\" -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/opencv4 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/../../devel/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/yolov5.dir/src/calibrator.cpp.o -c /home/nuaa/Downloads/v5s_ws/src/yolov5/src/calibrator.cpp",
+  "file": "/home/nuaa/Downloads/v5s_ws/src/yolov5/src/calibrator.cpp"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"yolov5\\\" -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/opencv4 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/../../devel/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/yolov5.dir/src/model.cpp.o -c /home/nuaa/Downloads/v5s_ws/src/yolov5/src/model.cpp",
+  "file": "/home/nuaa/Downloads/v5s_ws/src/yolov5/src/model.cpp"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"yolov5\\\" -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/opencv4 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/../../devel/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/yolov5.dir/src/postprocess.cpp.o -c /home/nuaa/Downloads/v5s_ws/src/yolov5/src/postprocess.cpp",
+  "file": "/home/nuaa/Downloads/v5s_ws/src/yolov5/src/postprocess.cpp"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"yolov5\\\" -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/opencv4 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/../../devel/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/yolov5.dir/src/yolov5_det.cpp.o -c /home/nuaa/Downloads/v5s_ws/src/yolov5/src/yolov5_det.cpp",
+  "file": "/home/nuaa/Downloads/v5s_ws/src/yolov5/src/yolov5_det.cpp"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build",
+  "command": "/usr/local/cuda/bin/nvcc  -DAPI_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"yolov5\\\" -I/home/nuaa/Downloads/v5s_ws/src/yolov5/build/devel/include -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem=/usr/include/opencv4 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/../../devel/include/yolov5 -I/home/nuaa/Downloads/v5s_ws/src/yolov5/plugin  -g   -std=c++11 -x cu -c /home/nuaa/Downloads/v5s_ws/src/yolov5/src/preprocess.cu -o CMakeFiles/yolov5.dir/src/preprocess.cu.o",
+  "file": "/home/nuaa/Downloads/v5s_ws/src/yolov5/src/preprocess.cu"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gmock_main.dir/__/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gmock_main.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /usr/src/googletest/googlemock/src/gmock_main.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gmock.dir/__/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock/gtest",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_main_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /usr/src/googletest/googletest/src/gtest_main.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/home/nuaa/Downloads/v5s_ws/src/yolov5/build/gtest/googlemock/gtest",
+  "command": "/usr/bin/clang++  -DAPI_EXPORTS -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -std=c++11   -DGTEST_HAS_PTHREAD=1   -std=gnu++11 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+}
+]
